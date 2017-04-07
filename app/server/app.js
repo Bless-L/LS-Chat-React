@@ -1,30 +1,21 @@
-const express = require('express');
-const path = require('path');
-const app = express();
+import express from 'express';
+import path from 'path';
+import http from 'http';
+import webSocket from 'socket.io';
+import mongoose from 'mongoose'
+import app from './router'
+import config from './config'
+
+const server = http.createServer(app);
+const io = webSocket.listen(server);
 
 const usersArr = [];
 
-server = require('http').createServer(app);
+mongoose.Promise = global.Promise
+mongoose.connect(config.database);
 
-const io = require('socket.io').listen(server);
-
-app.use('/', express.static(
-	path.resolve(__dirname, './app/client')
-));
-app.use('/dist', express.static(
-	path.resolve(__dirname, './dist')
-));
-
-app.use('/static', express.static(
-	path.resolve(__dirname, './static')
-));
-
-server.listen(8081, (error) => {
-	if (error) {
-		throw error
-	};
-	console.log('Server is running at localhost:8081');
-});
+app.use('/', express.static(config.static))
+app.use('/dist', express.static(config.dist))
 
 io.on('connection', (socket) => {
 
@@ -73,3 +64,10 @@ io.on('connection', (socket) => {
 		io.sockets.emit('newMsg', data);
 	});
 })
+
+server.listen(8081, (error) => {
+	if (error) {
+		throw error
+	};
+	console.log('Server is running at localhost:8081');
+});

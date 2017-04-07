@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import Chat from './components/chat/chat';
-import Login from './components/login/login';
-import History from './components/history/history';
+import { Route, Link, HashRouter as Router } from 'react-router-dom'
+
+import Home from './views/Home';
+import Login from './views/Login';
+
 
 //初始化一个全局socket
 window.socket = io.connect();
 
 render(
+  <Router>
     <div>
-        <History />
-        <Login />
-        <Chat />
-    </div>, 
+      <Route path="/" component={Home}/>
+      <Route path="/login" component={Login}/>
+    </div>
+  </Router>,
 	document.querySelector("#app")
 );

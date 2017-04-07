@@ -9,7 +9,7 @@ export default class ExpBox extends Component {
       this.state = {
         imgs: [],
         nums: 29,
-        path: '/static/img/',
+        path: '/assets/',
       }
     }
     //初始化数据

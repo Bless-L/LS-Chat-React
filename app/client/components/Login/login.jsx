@@ -1,55 +1,89 @@
-import React, { Component } from 'react';
+import React, {
+  Component
+} from 'react';
 import scss from './login.scss';
 
 export default class Login extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            name: '',
-            unLogin: true,
-            msg: ''
-        }
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: '',
+      password: '',
+      unLogin: true,
+      msg: ''
     }
+  }
 
-    componentWillMount(){
-        socket.on('login_cb',(type) =>{
-            if (type === 'success') {
-                this.setState({unLogin: false});
-            }else if (type === 'fail') {
-                this.setState({
-                    msg: `这个昵称已经有人使用过了，请换一个`,
-                    name: '',
-                });
-                document.getElementById('name').focus();
-            }
-        })
-    }
+  componentWillMount() {
+    socket.on('login_cb', (type) => {
+      if (type === 'success') {
+        this.setState({
+          unLogin: false
+        });
+      } else if (type === 'fail') {
+        this.setState({
+          msg: `这个昵称已经有人使用过了，请换一个`,
+          name: '',
+        });
+        document.getElementById('name').focus();
+      }
+    })
+  }
 
-    handleChange(e){
-        this.setState({name: e.target.value});
-    }
+  handleNameChange(e) {
+    this.setState({
+      name: e.target.value
+    });
+  }
 
-    save() {
-        if (!this.state.name.trim()) {return};
-        socket.emit('login', this.state.name);
-    }
+  handlePswChange (e) {
+    this.setState({
+      password: e.target.value
+    });
+  }
 
-    render() {
-        const showStyle = {
-            display: this.state.unLogin ? 'block' : 'none',
-        }
-        return (
-            <div className="login_wp" style={showStyle}>
-                <div className="login">
-                    <p>你的名字是：</p>
-                    <div className="login_input">
-                        <input type="text" onChange={this.handleChange.bind(this)} id="name" value={this.state.name} />
-                        <button onClick={this.save.bind(this)}>确定</button>
-                    </div>
-                    <p>{this.state.msg}</p>
-                </div>
-                <div className="login_shade"></div>
-            </div>
-        )
+  save() {
+    if (!this.state.name.trim()) {
+      return
+    };
+    fetch('/user/register', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        username: this.state.name,
+        password: this.state.password,
+      })
+    })
+    .then((res) => {return res.json()})
+    .then((res) => {
+      if (res.code === 0) {
+        const user = res.user
+        localStorage.username = user.username
+      }
+    })
+  }
+
+  render() {
+    const showStyle = {
+      display: this.state.unLogin ? 'block' : 'none',
     }
+    return (
+      <div className="login_wp" style={showStyle}>
+        <div className="login">
+          <p>请登录聊天室：</p>
+          <div className="login_input">
+            <label htmlFor="username">昵称：
+            <input type="text" onChange={this.handleNameChange.bind(this)} id="username" value={this.state.name} /></label>
+          </div>
+          <div className="password_input">
+            <label htmlFor="password">密码：
+            <input type="password" onChange={this.handlePswChange.bind(this)} id="password" value={this.state.password} /></label>
+          </div>
+          <button onClick={this.save.bind(this)}>确定</button>
+          <p>{this.state.msg}</p>
+        </div>
+        <div className="login_shade"></div>
+      </div>
+    )
+  }
 }

@@ -42,9 +42,9 @@ export default class Msgs extends Component {
       if (emojiIdx > 29) {
         result = result.replace(match[0], ' ~emoji~ ')
       } else if(emojiIdx >= 24) {
-        result = result.replace(match[0], `<img class="emoji" src="/static/img/${emojiIdx}.png" >`)
+        result = result.replace(match[0], `<img class="emoji" src="/assets/${emojiIdx}.png" >`)
       } else {
-        result = result.replace(match[0], `<img class="emoji" src="/static/img/${emojiIdx}.gif" >`)
+        result = result.replace(match[0], `<img class="emoji" src="/assets/${emojiIdx}.gif" >`)
       }
     }
     return result
