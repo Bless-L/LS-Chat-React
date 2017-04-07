@@ -1,25 +1,9 @@
-import path from 'path';
 import User from './user.model';
 
 export function loginUser (req, res) {
-/*  const reqUser = {
-    username: req.body.username,
-    password: req.body.password
-  }
-  const user = getUserByUsername(reqUser.username)
-  if (user) {
-    if (reqUser.password === user.password) {
-      res.send({code: 0, msg: '登录成功', user: user})
-    } else {
-      res.send({code: -1, msg: '密码错误'})
-    }
-  } else {
-    const result = addUser(reqUser)
-    res.send(result)
-  }*/
   const username = req.body.username
   const password = req.body.password
-  User.findOne({username: username}, (err, user) => {
+  User.findOne({username: username}).exec((err, user) => {
     if (!user) {
       const newUser = new User({
           username,
@@ -30,8 +14,8 @@ export function loginUser (req, res) {
           res.send({code: err.code, error: err})
         } else {
           delete user.password
-          res.session.user = user
-          res.send({code: 0, msg: '注册成功', user: user})
+          req.session.user = user
+          res.send({code: 1, msg: '注册成功', user: user})
         }
       })
     } else {
@@ -39,20 +23,20 @@ export function loginUser (req, res) {
         res.send({code: -1, msg: '密码错误'})
       } else {
         delete user.password
-        res.session.user = user
-        res.send({code: 0, msg: '登录成功', user: user.delete(password)})
+        req.session.user = user
+        res.send({code: 1, msg: '登录成功', user: user})
       }
-      
     }
   })
 }
 
-function getUserByUsername (username) {
-  User.findOne({username: username}, {password: 0}, (err, user) => {
+export function getUserByUsername (req, res) {
+  const username = req.params.username
+  User.findOne({username: username}, {password: 0}).populate('friends groups').exec((err, user) => {
     if (!user) {
-      return null
+      res.send({code: -1, msg: '没有找到该用户'})
     } else {
-      return user
+      res.send({code: 1, msg: '查找成功', user: user})
     }
   })
 }
@@ -71,7 +55,7 @@ function addUser (user) {
       }
     } else {
       return {
-        code: 0, 
+        code: 1, 
         msg: '注册成功', 
         user: user
       }

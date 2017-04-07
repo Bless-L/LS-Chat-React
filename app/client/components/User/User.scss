@@ -1,0 +1,15 @@
+.wrapper {
+	margin: 0 auto;
+}
+.msg_box {
+	height: 300px;
+	&_p {
+
+	}
+	&_date {
+		color: #666;
+	}
+    img {
+        max-width: 90%;
+    }
+}

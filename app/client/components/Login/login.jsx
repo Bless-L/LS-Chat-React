@@ -47,6 +47,7 @@ export default class Login extends Component {
       return
     };
     fetch('/user/register', {
+      credentials: 'include',
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -56,11 +57,15 @@ export default class Login extends Component {
     })
     .then((res) => {return res.json()})
     .then((res) => {
-      if (res.code === 0) {
+      if (res.code === 1) {
         const user = res.user
         localStorage.username = user.username
+        this.props.history.push('/')
+      } else {
+        alert(res.msg)
       }
     })
+    .catch((err) => {})
   }
 
   render() {
