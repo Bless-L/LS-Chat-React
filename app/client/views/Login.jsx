@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 
-import User from '../components/login/login'
+import LoginSub from '../components/login/login'
 
 export default class Login extends Component {
   render () {
     return (
       <div>
-        <User {...this.props} />
+        <LoginSub {...this.props} />
       </div>
     )
   }

@@ -12,7 +12,7 @@ window.socket = io.connect();
 render(
   <Router>
     <div>
-      <Route exact path="/" component={Home}/>
+      <Route exact path="/home" component={Home}/>
       <Route path="/login" component={Login}/>
     </div>
   </Router>,

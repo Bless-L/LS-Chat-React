@@ -58,9 +58,9 @@ export default class Login extends Component {
     .then((res) => {return res.json()})
     .then((res) => {
       if (res.code === 1) {
-        const user = res.user
+        const user = res.data
         localStorage.username = user.username
-        this.props.history.push('/')
+        this.props.history.push('/home')
       } else {
         alert(res.msg)
       }

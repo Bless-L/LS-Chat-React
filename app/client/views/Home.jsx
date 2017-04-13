@@ -11,35 +11,21 @@ export default class Home extends Component {
     super(props);
   
     this.state = {
-      userInfo: {},
-      groupsInfo: []
+      
     };
   }
 
   componentWillMount() {
-    this.islogin = loginAuth()
-    if(this.islogin) {
-      const username = localStorage.username
-      fetch(`'/user/getUserInfo/${username}'`).then((res) => {return res.json()})
-      .then((res) => {
-        this.setState({
-          userInfo: res
-        })
-      })
-      fetch(`'/groups/getGroupsInfo`).then((res) => {return res.json()})
-      .then((res) => {
-        this.setState({
-          groupsInfo: res
-        })
-      })
-    }
+    
   }
 
   render () {
-    return this.islogin ? (
-      <div>
+    const islogin = loginAuth()
+
+    return islogin ? (
+      <div className="home">
         <History />
-        <User userInfo={this.state.userInfo} groupsInfo={this.state.groupsInfo}/>
+        <User />
         <Chat />
       </div>
     ) : (

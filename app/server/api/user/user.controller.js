@@ -15,7 +15,7 @@ export function loginUser (req, res) {
         } else {
           delete user.password
           req.session.user = user
-          res.send({code: 1, msg: '注册成功', user: user})
+          res.send({code: 1, msg: '注册成功', data: user})
         }
       })
     } else {
@@ -24,7 +24,7 @@ export function loginUser (req, res) {
       } else {
         delete user.password
         req.session.user = user
-        res.send({code: 1, msg: '登录成功', user: user})
+        res.send({code: 1, msg: '登录成功', data: user})
       }
     }
   })
@@ -36,7 +36,7 @@ export function getUserByUsername (req, res) {
     if (!user) {
       res.send({code: -1, msg: '没有找到该用户'})
     } else {
-      res.send({code: 1, msg: '查找成功', user: user})
+      res.send({code: 1, msg: '查找成功', data: user})
     }
   })
 }

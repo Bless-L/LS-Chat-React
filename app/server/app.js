@@ -3,10 +3,16 @@ import path from 'path';
 import http from 'http';
 import webSocket from 'socket.io';
 import mongoose from 'mongoose'
+import webpack from 'webpack'
+import webpackDevMiddleware from 'webpack-dev-middleware'
 
+import webpackConfig from '../../webpack.config.js'
 import app from './router'
 import config from './config'
 
+const compiler = webpack(webpackConfig);
+
+app.use(webpackDevMiddleware(compiler, {publicPath: "/dist" }))
 const server = http.createServer(app);
 const io = webSocket.listen(server);
 
@@ -14,9 +20,6 @@ const usersArr = [];
 
 mongoose.Promise = global.Promise
 mongoose.connect(config.database);
-
-app.use('/', express.static(config.static))
-app.use('/dist', express.static(config.dist))
 
 io.on('connection', (socket) => {
 
