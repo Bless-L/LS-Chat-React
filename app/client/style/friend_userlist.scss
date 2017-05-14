@@ -1,0 +1,279 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+.friend_user {
+	.page-close {
+		float: right;
+		border: none;
+		height: 20px;
+		background-color: white;
+		outline: none;
+		&:hover {
+			background-color: rgb(251,97,85);
+		}
+	}
+	.self-show {
+		width: 100%px;
+		height: 50px;
+	}
+	.self-show img {
+		width: 45px;
+		height: 45px;
+		float: left;
+		margin-top: 2px;
+		margin-left: 6px;
+		border-radius: 5px;
+	}
+	.name {
+		float: left;
+		font-size: 14px;
+		width: 150px;
+		margin-left: 6px;
+	}
+	.signature {
+		float: left;
+		width: 180px;
+		margin-left: 6px;
+	}
+	.list-all {
+		width: 292px;
+		height: 620px;
+		border: 1px solid black;
+		margin: 6px auto;
+		position: relative;
+	}
+	.tab-btn {
+		width: 100%;
+		height: 30px;
+	}
+	.form-search {
+		width: 292px;
+		height: 33px;
+		border: 1px solid black;
+		border-left: none;
+		border-right: none;
+	}
+	._search {
+		width: 245px;
+		height: 33px;
+		border: none;
+		border-right: 1px solid black;
+		float: left;
+		margin-left: 6px;
+	}
+	._sub {
+		width: 30px;
+		height: 33px;
+		float: left;
+		background: url('../assets/search.png');
+		background-border: none;
+		cursor: pointer;
+		border: none;
+	}
+	.tab-list {
+		width: 292px;
+		height: 38px;
+		border-bottom: 1px solid RGB(229, 227, 228);
+	}
+	.three-group {
+		height: 38px;
+		list-style: none;
+		li {
+			cursor: pointer;
+		}
+	}
+
+	/*信息列表*/
+	.message {
+		width: 30px;
+		height: 31px;
+		background: url(../assets/message.png);
+		background-size: 30px;
+		margin-top: 5px;
+		margin-left: 45px;
+		display: inline-block;
+		float: left;
+	}
+	.friend {
+		float: left;
+		width: 30px;
+		height: 31px;
+		background: url(../assets/friend.png);
+		background-size: 30px;
+		margin-top: 5px;
+		margin-left: 50px;
+		display: inline-block;
+	}
+	.tab_bottom {
+		border-bottom: 3px solid RGB(185, 175, 178);
+	}
+	.group {
+		float: left;
+		width: 30px;
+		height: 31px;
+		background: url(../assets/group.png);
+		background-size: 30px;
+		margin-top: 5px;
+		margin-left: 50px;
+		display: inline-block;
+	}
+	.message-list {
+		margin-top: 4px;
+		width: 100%;
+		height: 410px;
+		border-bottom: 1px solid black;
+		overflow-y: scroll;
+	}
+	.member {
+		position: relative;
+		color: #000;
+		width: 273px;
+		height: 36px;
+		display: inline-block;
+	}
+	.member img {
+		width: 30px;
+		height: 30px;
+		margin-left: 3px;
+		margin-top: 3px;
+		float: left;
+	}
+	.shuoming {
+		height: 30px;
+		margin-left: 6px;
+		font-size: 1px;
+		float: left;
+		margin-top: 3px;
+	}
+	.message-list span {
+		float: right;
+		font-size: 1px;
+		margin-right: 6px;
+		margin-top: 3px;
+	}
+	.shuru {
+		margin-top: 10px;
+		margin-left: 10px;
+		margin-right: 10px;
+		width: 180px;
+		height: 25px;
+		outline: none;
+	}
+	.add-someone {
+		width: 50px;
+		height: 25px;
+	}
+
+	/*信息弹框*/
+	.message_show_edit {
+		width: 333px;
+		height: 120px;
+		border: 1px solid black;
+		position: absolute;
+		left: -350px;
+		display: none;
+	}
+	.page-close {
+		float: right;
+		border: none;
+		height: 20px;
+		background-color: white;
+		outline: none;
+		cursor: pointer;
+	}
+	.messagecont {
+		width: 100%;
+		height: 118px;
+		clear: both;
+	}
+	.niname {
+		display: inline-block;
+		margin-left: 55px;
+		width: 133px;
+		margin-top: 6px;
+	}
+	.dender {
+		display: inline-block;
+		margin-right: 55px;
+	}
+	.city {
+		margin-left: 20px;
+		margin-top: 6px;
+		display: inline-block;
+	}
+	.age {
+		margin-right: 50px;
+		margin-left: 8px;
+		display: inline-block;
+	}
+	.person-write {
+		display: inline-block;
+		margin-top: 6px;
+		margin-left: 15px;
+	}
+	.beizhuall {
+		margin-top: 6px;
+		margin-left: 15px;
+	}
+	.cotrol_retain {
+		margin-top: 6px;
+		margin-left: 240px;
+	}
+
+	/*头像弹框*/
+	#touxiangmessage_edit {
+		width: 333px;
+		height: 130px;
+		border: 1px solid black;
+		position: absolute;
+		left: -350px;
+		top: 8px;
+	}
+	.touxiang_page-close {
+		float: right;
+		border: none;
+		height: 20px;
+		background-color: white;
+		outline: none;
+		cursor: pointer;
+		&:hover {
+			background-color: rgb(251,97,85);
+		}
+	}
+	.touxiangmessagecont {
+		width: 100%;
+		height: 137px;
+		clear: both;
+	}
+	.touxaing_niname {
+		width: 120px;
+		margin-top: 10px;
+	}
+	.touxiang_dender {
+		width: 68px;
+	}
+	.touxiang_city {
+		width: 103px;
+		margin-top: 6px;
+	}
+	.touxiang_age {
+		width: 68px;
+	}
+	.touxiang_person_write {
+		width: 225px;
+		margin-top: 6px;
+	}
+	.touxiang_cotrol_retain {
+		margin-top: 6px;
+		margin-left: 258px;
+	}
+	.touxiang_box {
+		display: inline-block;
+		padding-left: 10px;
+	}
+	.touxiangmessage_edit_close {
+		height: 21px;
+		width: 100%
+	}
+}

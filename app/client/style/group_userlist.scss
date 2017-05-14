@@ -1,0 +1,264 @@
+.list-all{
+	width:292px;
+	height:620px;
+	border:1px solid black;
+	margin:6px auto;
+	position: relative;
+}
+.groups_main{
+	.page-close{
+		float:right;
+		border:none;
+		height: 20px;
+		background-color:white;
+		outline:none;
+	}
+	.self-show{
+		width: 100%px;
+	  height: 50px;
+	}
+	.self-show img{
+		width:45px;
+		height:45px;
+		float:left;
+		margin-top: 2px;
+		margin-left:6px;
+		border-radius: 5px;
+	}
+	.signature{
+	    float:left;
+	    margin-top: 15px;
+	    margin-left:6px;
+	}
+	.tab-btn{
+		width:100%;
+		height:30px;
+	}
+	.form-search{
+		width: 292px;
+	    height: 33px;
+	    border: 1px solid black;
+	    border-left: none;
+	    border-right: none;
+	}
+	._search{
+	    width: 245px;
+	    height: 33px;
+	    border: none;
+	    border-right:1px solid black;
+	    float:left;
+	    margin-left: 6px;
+	}
+	._sub{
+	    width: 30px;
+	    height: 33px;
+	    float:left;
+	    background: url('../assets/search.png');
+	    background-border:none;
+	    cursor: pointer;
+	    border: none;
+	}
+	.tab-list{
+		width:292px;
+		height:38px;
+		border-bottom:1px solid RGB(229,227,228);
+	}
+	.three-group{
+	  height:38px;
+		list-style: none;
+	}
+	/*信息列表*/
+	.message{
+		width: 30px;
+	    height: 31px;
+	    background: url(../assets/message.png);
+	    background-size: 30px;
+	    margin-top: 5px;
+	    margin-left: 45px;
+	    display: inline-block;
+	    float:left;
+	    
+	}
+
+	.friend{
+		float:left;
+	    width: 30px;
+	    height: 31px;
+	    background: url(../assets/friend.png);
+	    background-size: 30px;
+	    margin-top: 5px;
+	    margin-left: 50px;
+	    display: inline-block;
+	}
+	.group{
+		float:left;
+		width: 30px;
+	    height: 31px;
+	    background: url(../assets/group.png);
+	    background-size: 30px;
+	    margin-top: 5px;
+	    margin-left:50px;
+	    display: inline-block;
+	    border-bottom: 3px solid RGB(185,175,178);
+	}
+	.message-list{
+	    margin-top: 4px;
+		width:100%;
+		height:410px;
+		border-bottom:1px solid black;
+		overflow-y: scroll;
+	}
+	.member-one{
+		width:273px;
+		height:36px;
+		display:inline-block;
+	}
+	.member-one img{
+		width:30px;
+		height:30px;
+		margin-left:3px;
+		margin-top:3px;
+		float:left;
+	}
+	.shuoming{
+		height:30px;
+		margin-left:6px;
+		font-size:1px;
+		float:left;
+	    margin-top:3px;
+	}
+	.message-list span{
+	    float:right;
+	    font-size: 1px;
+	    margin-right:6px;
+	    margin-top: 3px;
+	}
+	.member-two img{
+		width:30px;
+		height:30px;
+		margin-left:3px;
+		margin-top:3px;
+		float:left;
+	}
+	.member-two{
+		width:273px;
+		height:36px;
+		display:inline-block;
+	}
+	#shuru{
+		margin-top: 10px;
+		margin-left: 10px;
+		margin-right: 10px;
+		width: 180px;
+	    height: 25px;
+	    outline:none;
+	}
+	.add-someone{
+		width: 50px;
+	    height: 25px;
+	}
+	/*信息列表弹框*/
+	#group_edit{
+		width:333px;
+		height:130px;
+		border:1px solid black;
+		position: absolute;
+		left: -350px;
+		top: 200px;
+		display: none;
+	}
+	.touxiang_page-close{
+		float:right;
+		border:none;
+		height: 20px;
+		background-color:white;
+		outline:none;
+		cursor:pointer;
+	}
+	.group_edit_cont{
+		width:100%;
+		height:137px;
+		clear:both;
+	}
+	.group_editname{
+	    width: 100px;
+	    margin-top: 10px;
+	    display: inline-block;
+	    margin-left: 30px;
+	}
+	.group_editnumber{
+		display: inline-block;
+	    margin-left: 60px;
+	}
+	.groupset_edittime{
+	    margin-top: 6px;
+	    display: inline-block;
+	    margin-left: 30px;
+	}
+	.group_editowner{
+		display:inline-block;
+	}
+	.group_edittag{
+	    width: 242px;
+	    margin-top: 6px;
+	    display: inline-block;
+	    margin-left: 30px;
+	}
+	.grouptipedit_cotrol_retain{
+		margin-top: 6px;
+	    margin-left: 258px;
+	}
+	.group_cont_div {
+		display:inline-block;
+		margin-left: 10px;
+	}
+
+	/*建立新群*/
+	#group-set{
+		width:333px;
+		height:130px;
+		border:1px solid black;
+		position: absolute;
+		display: none;
+		top: 400px;
+	    left: 300px;
+	}
+	.touxiang_page-close{
+		float:right;
+		border:none;
+		height: 20px;
+		background-color:white;
+		outline:none;
+		cursor:pointer;
+	}
+	.group_cont{
+		width:100%;
+		height:137px;
+		clear:both;
+	}
+	.group_name{
+	    width: 120px;
+	    margin-top: 10px;
+	}
+	.group_number{
+		width:53px;
+	}
+	.groupset_time{
+	   margin-left: 10px;
+	   margin-top: 6px;
+	   width: 190px;
+	   float: left;
+	}
+	.group_owner{
+	    margin-left: 10px;
+	    margin-top: 6px;
+	}
+	.group_tag{
+	   width:242px;
+	   margin-top: 6px;
+	}
+	.grouptip_cotrol_retain{
+		margin-top: 6px;
+	    margin-left: 258px;
+	}
+}

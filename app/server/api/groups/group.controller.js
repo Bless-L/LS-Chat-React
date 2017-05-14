@@ -16,7 +16,9 @@ export function addGroupsByUser (req, res) {
     res.send({code: -1, msg: '用户未登录'}) 
     return
   }
-  const name = req.body.groupName
+  const name = req.body.groupInfo.groupName
+  const info = req.body.groupInfo.info
+  const maxPeople = req.body.groupInfo.maxPeople
   const creator = req.session.user.username
   const data = {} // 用来存放异步数据
 
@@ -24,6 +26,8 @@ export function addGroupsByUser (req, res) {
   userPromise.then((user) => {
     const newGroup = new Group({
       name,
+      info,
+      maxPeople,
       creator: user._id
     })
     data.user = user

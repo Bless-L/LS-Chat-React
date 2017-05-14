@@ -1,0 +1,223 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+a {
+	background: transparent;
+	text-decoration: none;
+	-webkit-tap-highlight-color: transparent;
+}
+.clearFix {
+	&:after {
+		content: '';
+		display: block;
+		clear: both
+	}
+}
+.wrap {
+	width: 800px;
+	margin: 40px auto;
+	border: 1px solid black;
+	background: url('../assets/ltbj.jpg');
+}
+.box1 {
+	float: left;
+	width: 300px;
+	height: 573px;
+	input {
+		border: none;
+	}
+}
+.self-info {
+	height: 50px;
+
+	span {
+		text-align: center;
+	}
+}
+#self-picture {
+	width: 42px;
+	height: 42px;
+	border-radius: 5px;
+	margin-left: 7px;
+	margin-top: 7px;
+}
+#add_friend {
+	width: 30px;
+	height: 30px;
+	border-radius: 5px;
+	margin-left: 166px;
+	margin-top: 7px;
+	cursor: pointer;
+}
+.form-search {
+	width: 283px;
+	height: 37px;
+	border: 1px solid black;
+	margin-left: 7px;
+	margin-top: 7px;
+
+	input {
+		outline: none;
+	}
+}
+._search {
+	width: 235px;
+	height: 37px;
+	border: none;
+	border-right: 1px solid black;
+	float: left;
+}
+._sub {
+	width: 47px;
+	height: 37px;
+	float: left;
+	background: url('../assets/search.png');
+	cursor: pointer;
+	border-color: #3c763d;
+}
+.newperson {
+	width: 283px;
+	height: 37px;
+	margin-top: 7px;
+	position: relative;
+	display: table;
+	border: none;
+	border-bottom: 1px solid black;
+	margin-left: 7px;
+}
+.opened_message {
+	width: 283px;
+	height: 438px;
+	margin-top: 15px;
+	margin-left: 7px;
+	.opened_message_li {
+		img {
+			width: 30px;
+			height: 30px;
+			border-radius: 5px;
+		}
+		span {
+			font-size: 16px;
+			margin-left: 6px;
+		}
+	}
+}
+.opened_message ul {
+	list-style: none;
+}
+.opened_message ul li {
+	padding: 3px;
+	font-size: 14px;
+	line-height: 25px;
+	cursor: pointer;
+}
+.opened_message ul li:hover {
+	background-color: #e5e5e5;
+}
+.box2 {
+	border-left: 1px solid black;
+	margin-left: 300px;
+}
+.he {
+	height: 50px;
+	border-bottom: 1px solid black;
+}
+.chat-title {
+	font-family: Cursive;
+	font-weight: 500;
+	text-align: center;
+	line-height: 55px;
+}
+.scroll-wrap {
+	height: 400px;
+	border-bottom: 1px solid black;
+	position: relative;
+}
+.systemMessage {
+	color: red;
+	margin-top: 5px;
+	margin-left: 5px;
+}
+.scroll-wrap .scroll-cont {
+	height: 100%;
+	overflow-y: auto;
+	padding-left: 15px;
+	padding-right: 25px;
+	.msg {
+		display: inline-block;
+		padding: 5px;
+		background-color: #cdd7e2;
+		border-radius: 10px;
+		margin-top: 10px;
+	}
+	.msg_left {
+		float: left
+	}
+	.msg_right {
+		float: right
+	}
+}
+.scroll-wrap .scroll-bar {
+	position: absolute;
+	height: 100%;
+	top: 0;
+	right: 0;
+	width: 20px;
+	background-color: #eaeaea;
+}
+.scroll-wrap .scroll-slider {
+	position: absolute;
+	top: 0;
+	width: 18px;
+	height: 25px;
+	background-color: #999;
+	right: 1px;
+}
+.fo {
+}
+#message {
+	width: 400px;
+	border: none;
+	margin-left: 10px;
+}
+.tabicon {
+	position: relative;
+	height: 30px;
+	margin-top: 4px;
+}
+.icon {
+	position: absolute;
+}
+li {
+	cursor: pointer;
+}
+.wenzi {
+	background: url('../assets/wenzi.png');
+	background-size: 100%;
+	background-repeat: no-repeat;
+	display: inline-block;
+	height: 20px;
+	width: 20px;
+	float: left;
+	margin-left: 4px;
+}
+.biaoqing {
+	background: url('../assets/biaoqing.png');
+	background-size: 100%;
+	background-repeat: no-repeat;
+	display: inline-block;
+	height: 20px;
+	width: 20px;
+	float: left;
+	margin-left: 4px;
+}
+.liwu {
+	background: url('../assets/liwu.png');
+	background-size: 100%;
+	background-repeat: no-repeat;
+	display: inline-block;
+	height: 20px;
+	width: 20px;
+	margin-left: 8px;
+}

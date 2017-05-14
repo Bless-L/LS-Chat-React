@@ -52,27 +52,6 @@ export default class User extends Component {
     })
   }
 
-  addGroup() {
-    if(!this.state.name) return
-    fetch('/groups/addGroup', {
-      credentials: 'include',
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        groupName: this.state.name,
-      })
-    })
-    .then((res) => { return res.json() })
-    .then((res) => {
-      if(res.code === 1) {
-        alert('新建成功')
-        this._getGroupsInfo()
-      } else {
-        alert('新建失败')
-      }
-    })
-  }
-
   render() {
     const groups = this.state.groupsInfo.map((group) => {
       return (

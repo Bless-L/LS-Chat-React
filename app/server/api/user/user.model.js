@@ -10,6 +10,11 @@ const UserSchema = new Schema({
     required: true
   },
   password: {type: String, required: true},
+  nickName: String,
+  sex: Number,
+  age: Number,
+  address: String,
+  signature: String,
   friends: [{type: Schema.Types.ObjectId, ref: 'User'}],
   groups: [{type: Schema.Types.ObjectId, ref: 'Group'}]
 });

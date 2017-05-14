@@ -41,6 +41,42 @@ export function getUserByUsername (req, res) {
   })
 }
 
+export function editUserInfo(req, res) {
+  const username = req.session.user.username
+  const updateInfo = req.body.info
+  const userPromise = User.findOneAndUpdate({username: username}, updateInfo, {new: true})
+  userPromise.then((user) => {
+    res.send({code: 1, msg: '修改成功', data: user})
+  }).catch((err) => {
+    res.send({code: err.code, error: err})
+  })
+}
+
+export function addFriend(req, res) {
+  const username = req.session.user.username
+  const friendName = req.body.friendName
+  const data = {}
+
+  const userPromise = User.findOne({username: username}).exec()
+  userPromise.then((user) => {
+    data.friendsArr = user.friends;
+    return User.findOne({username: friendName}).exec()
+  }).then((friend) => {
+    const _id = friend._id
+    if( data.friendsArr.indexOf(_id) > -1){
+      res.send({code: 10002, msg: '你已添加该用户'})
+      return
+    }else {
+      data.friendsArr.push(_id)
+      return User.findOneAndUpdate({username: username}, { friends: data.friendsArr }, {new: true}).exec()
+    }
+  }).then((user) => {
+    res.send({code: 1, msg: '添加成功'})
+  }).catch((err) => {
+    res.send({code: 10001, msg: '没有找到该用户'})
+  })
+}
+
 function addUser (user) {
   const newUser = new User({
     username: user.username,

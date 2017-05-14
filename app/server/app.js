@@ -10,63 +10,47 @@ import webpackConfig from '../../webpack.config.js'
 import app from './router'
 import config from './config'
 
+import { sendPrivateMsg } from './webSocket'
+
 const compiler = webpack(webpackConfig);
 
 app.use(webpackDevMiddleware(compiler, {publicPath: "/dist" }))
 const server = http.createServer(app);
 const io = webSocket.listen(server);
 
-const usersArr = [];
+global.allSocket = [];
+global.allGroup = {};
 
 mongoose.Promise = global.Promise
-mongoose.connect(config.database);
+mongoose.connect(config.database)
 
 io.on('connection', (socket) => {
 
-	//用户登录
-	socket.on('login', (nickname) => {
-		if (usersArr.indexOf(nickname) > -1) {
-			socket.emit('login_cb', 'fail');
-		} else {
-			socket.userIndex = usersArr.length;
-			socket.nickname = nickname;
-			usersArr.push(nickname);
+	socket.on('join', function (userName){  
+    allSocket[userName] = socket 
+  })
 
-			socket.emit('login_cb', 'success');
+	const groupUser
 
-			const data = {
-				nickname,
-				len: usersArr.length,
-				type: 'loginIn',
-			};
-			io.sockets.emit('system', data);
-		}
-	});
-
-	//用户离开
-	socket.on('disconnect', () => {
-		if (!socket.nickname) return;
-		//将断开连接的用户从users中删除
-		usersArr.splice(socket.userIndex, 1);
-
-		//通知除自己以外的所有人
-		const data = {
-			nickname: socket.nickname,
-			len: usersArr.length,
-			type: 'loginOut',
-		};
-		socket.broadcast.emit('system', data);
-	});
+	socket.on('joinGroup', (userId, username, groupName) => {
+		if (!allGroup[groupName]) {
+      allGroup[groupName] = [];
+    }
+    allGroup[groupName].push(userId)
+    groupUser = username
+    socket.join(groupName)
+    // 通知房间内人员
+    socket.broadcast.in(groupName).emit('sys', 
+    	username + '加入了聊天室,共' + allGroup[groupName].length +'人' );
+    console.log(username + '加入了' + groupName);
+	})
 
 	//发送信息
-	socket.on('sendMsg', (content, type) => {
-		const data = {
-			type: (type || 'text'),
-			content,
-			nickname: socket.nickname,
-		};
-		io.sockets.emit('newMsg', data);
+	socket.on('group_message', (content, groupName) => {
+    io.to(groupName).emit('gmsg', groupUser, content);
 	});
+
+	socket.on('private_message', sendPrivateMsg)
 })
 
 server.listen(8081, (error) => {

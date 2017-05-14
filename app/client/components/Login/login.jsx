@@ -60,7 +60,7 @@ export default class Login extends Component {
       if (res.code === 1) {
         const user = res.data
         localStorage.username = user.username
-        this.props.history.push('/home')
+        this.props.history.push('/user')
       } else {
         alert(res.msg)
       }
@@ -69,26 +69,35 @@ export default class Login extends Component {
   }
 
   render() {
-    const showStyle = {
-      display: this.state.unLogin ? 'block' : 'none',
-    }
     return (
-      <div className="login_wp" style={showStyle}>
-        <div className="login">
-          <p>请登录聊天室：</p>
-          <div className="login_input">
-            <label htmlFor="username">昵称：
-            <input type="text" onChange={this.handleNameChange.bind(this)} id="username" value={this.state.name} /></label>
+      <section id="login-window">
+        <div id="self-head">
+          <div className="self-img">
+            <img src="../../assets/touxiang1.jpg" />
           </div>
-          <div className="password_input">
-            <label htmlFor="password">密码：
-            <input type="password" onChange={this.handlePswChange.bind(this)} id="password" value={this.state.password} /></label>
-          </div>
-          <button onClick={this.save.bind(this)}>确定</button>
-          <p>{this.state.msg}</p>
         </div>
-        <div className="login_shade"></div>
-      </div>
+        <div id="textshuru">
+          <div className="wrap1"> 
+            <i className="icon1"></i>
+            <input type="text" className="username" 
+              onChange={this.handleNameChange.bind(this)} 
+              value={this.state.name} 
+              name="username" />
+          </div>
+          <div className="wrap2"> 
+            <i className="icon2"></i>
+            <input type="password" className="password" 
+              onChange={this.handlePswChange.bind(this)}  
+              value={this.state.password} 
+              name="password" />
+          </div>
+        </div>
+
+        <div className="delu1">
+          <input type="submit" name="submit" value="Sign" className="delu"
+            onClick={this.save.bind(this)}/>
+        </div>
+      </section>
     )
   }
 }

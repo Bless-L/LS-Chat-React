@@ -6,8 +6,9 @@ const GroupSchema = new Schema({
   creator: {type: Schema.Types.ObjectId, ref: 'User'},
   creatTime: {type: Date, default: Date.now},
   name: String,
+  info: String,
   Msgs: [{type: Schema.Types.ObjectId, ref: 'Msg'}],
-  maxOnlinePeople: Number
+  maxPeople: Number
 });
 
 export default mongoose.model('Group', GroupSchema);
